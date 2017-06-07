@@ -19,11 +19,21 @@ public class XlsData {
      * данные для проверки, создания сетевых папок и дальнейшего перемещения в них фотографий
      */
     //Метод для загрузки данных в массив
-    public String [][] xlsImport (String filePath, String sheetName) throws IOException {
+    public String [][] xlsImport (String filePath, String sheetName) {
         //Создаются объекты для работы с .xls файлом
-        POIFSFileSystem fileSystem = new POIFSFileSystem(new FileInputStream(filePath));
-        HSSFWorkbook xlsBaseFile = new HSSFWorkbook(fileSystem);
-        HSSFSheet xlsSheet = xlsBaseFile.getSheet(sheetName);
+        POIFSFileSystem fileSystem;
+        HSSFWorkbook xlsBaseFile;
+        HSSFSheet xlsSheet = null;
+        //Подключение к .xls книге
+        try {
+            fileSystem = new POIFSFileSystem(new FileInputStream(filePath));
+            xlsBaseFile = new HSSFWorkbook(fileSystem);
+            xlsSheet = xlsBaseFile.getSheet(sheetName);
+        }
+        catch (IOException e){
+            System.out.println("Не обнаружен валидный файл base.xls");
+        }
+
         //Создаются массивы, для записи параметров из каждой ячейки таблицы
         String[] photoParametersEmployee = new String[xlsSheet.getLastRowNum()];
         String[] photoParametersBU = new String[xlsSheet.getLastRowNum()];

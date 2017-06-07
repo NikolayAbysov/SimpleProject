@@ -18,7 +18,7 @@ public class PhotoMove {
     String fileSeparator = "/";                     //Разделитель для составления пути
     String subPath = "Фото торговых представителей";//Вставка в путь к сетевой папке
 
-    public void pathCreate() throws IOException {   //Метод проверяет существования пути к файлу
+    public void pathCreate() {   //Метод проверяет существования пути к файлу
 
         XlsData xlsDataObj = new XlsData();         //Создается новый объект класса XlsData для импорта данных из фвйла base.xls
         String[][] xlsData = xlsDataObj.xlsImport(xlsBaseFilePath, xlsBaseInfoSheet);
@@ -88,18 +88,27 @@ public class PhotoMove {
                         destChannel = new FileOutputStream(folderPath).getChannel();
                         destChannel.transferFrom(sourceChannel, 0, sourceChannel.size());
                         stringBuilder = new StringBuilder();
-                    }finally{
+                    }
+                    catch (IOException e){
+                        System.out.println("Невозможно скопировать файл " + listPhotos[i]);
+                    }
+                    finally{
                         sourceChannel.close();
                         destChannel.close();
                     }
                     //Удаление исходного файла
-                    Path path = FileSystems.getDefault().getPath(stringBuilder.append(outputFolderPath)
-                                                                              .append(fileSeparator)
-                                                                              .append(listPhotos[i]).toString());
-                    stringBuilder = new StringBuilder();
-                    Files.delete(path);
-                    System.out.println("Перемещен файл " + listPhotos[i]);
-                    break;
+                    try {
+                        Path path = FileSystems.getDefault().getPath(stringBuilder.append(outputFolderPath)
+                                .append(fileSeparator)
+                                .append(listPhotos[i]).toString());
+                        stringBuilder = new StringBuilder();
+                        Files.delete(path);
+                        System.out.println("Перемещен файл " + listPhotos[i]);
+                        break;
+                    }
+                    catch (IOException e){
+                        System.out.println("Невозможно удалить файл " + listPhotos[i]);
+                    }
                 }
             }
         }
