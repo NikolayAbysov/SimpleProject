@@ -9,17 +9,13 @@ import org.apache.poi.poifs.filesystem.POIFSFileSystem;
 import java.io.FileInputStream;
 import java.io.IOException;
 
-public class XlsData {
+class XlsData {
     /**
-     * @param filePath
-     * @param sheetName
-     * @return
-     * @throws IOException
      * В классе XlsData содержится метод xlsImport для создания двумерного массива, содержащего
      * данные для проверки, создания сетевых папок и дальнейшего перемещения в них фотографий
      */
     //Метод для загрузки данных в массив
-    public String [][] xlsImport (String filePath, String sheetName) {
+    String [][] xlsImport(String filePath, String sheetName) {
         //Создаются объекты для работы с .xls файлом
         POIFSFileSystem fileSystem;
         HSSFWorkbook xlsBaseFile;

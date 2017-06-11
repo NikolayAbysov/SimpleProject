@@ -16,11 +16,18 @@ package com.abysov;
 
 import java.io.IOException;
 
-public class Main {
+class Main {
 
     public static void main(String[] args) throws IOException {
 
         PhotoMove move = new PhotoMove();
+        move.setXlsBaseFilePath("H:/upload/base.xls");
+        move.setXlsBaseInfoSheet("base");
+        move.setOutputFolderPath("H:/upload");
+        move.setInputFolderPath("Z:/Hermes");
+        move.setFileSeparator("/");
+        move.setSubPath("Фото торговых представителей");
+
         move.pathCreate();
         move.fileMove();
         System.out.println("Перемещение файлов завершено.");

@@ -6,17 +6,41 @@ import java.nio.file.Path;
 import java.nio.file.Files;
 import java.nio.file.FileSystems;
 
-public class PhotoMove {
+class PhotoMove {
     /**
      * В классе PhotoMove содержатся методы pathCreate и fileMove, которые обеспечивают
      * проверку существования сетевой папки и непосредственное перемещение фотографии соответственно.
      */
-    String xlsBaseFilePath = "H:/upload/base.xls";  //Путь к файлу base.xls
-    String xlsBaseInfoSheet = "base";               //Название листа с данными
-    String outputFolderPath = "H:/upload";          //Путь к общей папке синхронизации
-    String inputFolderPath = "Z:/Hermes";           //Путь к корневой папке, куда будут перемещаться фотографии
-    String fileSeparator = "/";                     //Разделитель для составления пути
-    String subPath = "Фото торговых представителей";//Вставка в путь к сетевой папке
+    private String xlsBaseFilePath;  //Путь к файлу base.xls
+    private String xlsBaseInfoSheet;               //Название листа с данными
+    private String outputFolderPath;          //Путь к общей папке синхронизации
+    private String inputFolderPath;           //Путь к корневой папке, куда будут перемещаться фотографии
+    private String fileSeparator;                     //Разделитель для составления пути
+    private String subPath;//Вставка в путь к сетевой папке
+
+    public void setXlsBaseFilePath(String xlsBaseFilePath) {
+        this.xlsBaseFilePath = xlsBaseFilePath;
+    }
+
+    public void setXlsBaseInfoSheet(String xlsBaseInfoSheet) {
+        this.xlsBaseInfoSheet = xlsBaseInfoSheet;
+    }
+
+    public void setOutputFolderPath(String outputFolderPath) {
+        this.outputFolderPath = outputFolderPath;
+    }
+
+    public void setInputFolderPath(String inputFolderPath) {
+        this.inputFolderPath = inputFolderPath;
+    }
+
+    public void setFileSeparator(String fileSeparator) {
+        this.fileSeparator = fileSeparator;
+    }
+
+    public void setSubPath(String subPath) {
+        this.subPath = subPath;
+    }
 
     public void pathCreate() {   //Метод проверяет существования пути к файлу
 
