@@ -20,7 +20,13 @@ class Main {
 
     public static void main(String[] args) throws IOException {
 
+        StatusFrame statusFrame = new StatusFrame();
+        statusFrame.setLocationRelativeTo(null);
+        statusFrame.setResizable(false);
+        statusFrame.setVisible(true);
+
         PhotoMove move = new PhotoMove();
+
         move.setXlsBaseFilePath("H:/upload/base.xls");
         move.setXlsBaseInfoSheet("base");
         move.setOutputFolderPath("H:/upload");
