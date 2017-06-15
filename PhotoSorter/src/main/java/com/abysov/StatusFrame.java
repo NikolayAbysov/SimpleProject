@@ -22,13 +22,13 @@ class StatusFrame extends javax.swing.JFrame {
         jLabel = new JLabel("Current progress:");
         getContentPane().add(jLabel);
 
-        //Ñîçäàíèå âûâîäà êîíñîëè
+        //Консольный вывод
         JConsole jConsole = new JConsole();
 
         sp_jTextArea = new JScrollPane(jConsole);
         getContentPane().add(sp_jTextArea);
 
-        //Àâòîñêðîëë äëÿ ïàíåëè.
+        //Автоскролл для JScrollPane
         DefaultCaret caret = (DefaultCaret) jConsole.getCaret();
         caret.setUpdatePolicy(DefaultCaret.ALWAYS_UPDATE);
         sp_jTextArea.setViewportView(jConsole);
@@ -45,7 +45,6 @@ class StatusFrame extends javax.swing.JFrame {
     protected static void main(String args[]) {
         javax.swing.JFrame window = new javax.swing.JFrame();
 
-        //window.setTitle("Move status");
         window.pack();
         window.show();
     }
@@ -85,7 +84,5 @@ class JFrameLayout implements LayoutManager {
         if (c.isVisible()) {c.setBounds(insets.left+8,insets.top+8,150,24);}
         c = parent.getComponent(1);
         if (c.isVisible()) {c.setBounds(insets.left+8,insets.top+40,388,410);}
-        //c = parent.getComponent(2);
-        //if (c.isVisible()) {c.setBounds(insets.left+88,insets.top+8,224,24);}
     }
 }

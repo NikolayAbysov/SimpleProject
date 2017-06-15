@@ -136,5 +136,6 @@ class PhotoMove {
                 }
             }
         }
+        System.out.println("Перемещение файлов завершено.");
     }
 }

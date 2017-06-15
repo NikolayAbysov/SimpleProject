@@ -26,16 +26,13 @@ class Main {
         statusFrame.setVisible(true);
 
         PhotoMove move = new PhotoMove();
-
         move.setXlsBaseFilePath("H:/upload/base.xls");
         move.setXlsBaseInfoSheet("base");
         move.setOutputFolderPath("H:/upload");
         move.setInputFolderPath("Z:/Hermes");
         move.setFileSeparator("/");
         move.setSubPath("Фото торговых представителей");
-
         move.pathCreate();
         move.fileMove();
-        System.out.println("Перемещение файлов завершено.");
     }
 }

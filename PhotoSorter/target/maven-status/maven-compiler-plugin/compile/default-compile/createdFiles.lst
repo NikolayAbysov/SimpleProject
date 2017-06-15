@@ -1,3 +1,8 @@
-com\abysov\Main.class
 com\abysov\PhotoMove.class
+com\abysov\JConsole.class
+com\abysov\StatusFrame.class
+com\abysov\JFrameLayout.class
+com\abysov\StatusFrame$1.class
+com\abysov\JConsole$ConsoleOutputStream.class
+com\abysov\Main.class
 com\abysov\XlsData.class
