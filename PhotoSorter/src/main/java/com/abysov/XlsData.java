@@ -15,7 +15,7 @@ class XlsData {
      * данные для проверки, создания сетевых папок и дальнейшего перемещения в них фотографий
      */
     //Метод для загрузки данных в массив
-    String [][] xlsImport(String filePath, String sheetName) {
+    protected String [][] xlsImport(String filePath, String sheetName) {
         //Создаются объекты для работы с .xls файлом
         POIFSFileSystem fileSystem;
         HSSFWorkbook xlsBaseFile;

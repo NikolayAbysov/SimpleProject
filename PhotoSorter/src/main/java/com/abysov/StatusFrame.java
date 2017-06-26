@@ -7,6 +7,7 @@ import javax.swing.text.DefaultCaret;
 
 
 class StatusFrame extends javax.swing.JFrame {
+
     JLabel jLabel;
     JScrollPane sp_jTextArea;
 

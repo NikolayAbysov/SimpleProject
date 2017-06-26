@@ -18,31 +18,31 @@ class PhotoMove {
     private String fileSeparator;                     //Разделитель для составления пути
     private String subPath;//Вставка в путь к сетевой папке
 
-    public void setXlsBaseFilePath(String xlsBaseFilePath) {
+    protected void setXlsBaseFilePath(String xlsBaseFilePath) {
         this.xlsBaseFilePath = xlsBaseFilePath;
     }
 
-    public void setXlsBaseInfoSheet(String xlsBaseInfoSheet) {
+    protected void setXlsBaseInfoSheet(String xlsBaseInfoSheet) {
         this.xlsBaseInfoSheet = xlsBaseInfoSheet;
     }
 
-    public void setOutputFolderPath(String outputFolderPath) {
+    protected void setOutputFolderPath(String outputFolderPath) {
         this.outputFolderPath = outputFolderPath;
     }
 
-    public void setInputFolderPath(String inputFolderPath) {
+    protected void setInputFolderPath(String inputFolderPath) {
         this.inputFolderPath = inputFolderPath;
     }
 
-    public void setFileSeparator(String fileSeparator) {
+    protected void setFileSeparator(String fileSeparator) {
         this.fileSeparator = fileSeparator;
     }
 
-    public void setSubPath(String subPath) {
+    protected void setSubPath(String subPath) {
         this.subPath = subPath;
     }
 
-    public void pathCreate() {   //Метод проверяет существования пути к файлу
+    protected void pathCreate() {   //Метод проверяет существования пути к файлу
 
         XlsData xlsDataObj = new XlsData();         //Создается новый объект класса XlsData для импорта данных из фвйла base.xls
         String[][] xlsData = xlsDataObj.xlsImport(xlsBaseFilePath, xlsBaseInfoSheet);
@@ -79,7 +79,7 @@ class PhotoMove {
         }
     }
 
-    public void fileMove() throws IOException {           //Метод перемещает фотографию по указанному пути (копирование + удаление)
+    protected void fileMove() throws IOException {           //Метод перемещает фотографию по указанному пути (копирование + удаление)
 
         File photoList = new File(outputFolderPath);
         String[] listPhotos = photoList.list();
