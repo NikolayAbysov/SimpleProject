@@ -1,4 +1,5 @@
 com\abysov\PhotoMove.class
+com\abysov\AppSettings.class
 com\abysov\JConsole.class
 com\abysov\StatusFrame.class
 com\abysov\JFrameLayout.class

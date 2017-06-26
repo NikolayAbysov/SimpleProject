@@ -24,10 +24,11 @@
 package com.abysov;
 
 import java.io.IOException;
+import java.net.URISyntaxException;
 
 class Main {
 
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) throws IOException, URISyntaxException {
 
         StatusFrame statusFrame = new StatusFrame();
         statusFrame.setLocationRelativeTo(null);
@@ -37,7 +38,7 @@ class Main {
         AppSettings appSettings = new AppSettings();
 
         appSettings.settingsLoad();
-        System.out.println("Settings loaded");
+        System.out.println("Настройки загружены");
 
         PhotoMove move = new PhotoMove();
         move.setXlsBaseFilePath(appSettings.getXlsBaseFilePath());

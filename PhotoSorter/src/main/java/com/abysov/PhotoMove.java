@@ -1,6 +1,8 @@
 package com.abysov;
 
 import java.io.*;
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.nio.channels.FileChannel;
 import java.nio.file.Path;
 import java.nio.file.Files;
@@ -48,8 +50,16 @@ class PhotoMove {
         String[][] xlsData = xlsDataObj.xlsImport(xlsBaseFilePath, xlsBaseInfoSheet);
         String checkFolderPath;
         String checkStopper = "checkStopper";       //Эта переменная позволяет делать только 1 проверку для всех фотографий пользователя
-        File photoList = new File(outputFolderPath);
-        String[] listPhotos = photoList.list();
+        String[] listPhotos = null;
+
+        try {
+            File FileToRead = new File(new URI(outputFolderPath));
+            listPhotos = FileToRead.list();
+        }
+        catch (URISyntaxException e){
+            e.printStackTrace();
+        }
+
         StringBuilder stringBuilder = new StringBuilder();
 
         for (int i = 0; i < listPhotos.length; i++) {
@@ -81,8 +91,16 @@ class PhotoMove {
 
     protected void fileMove() throws IOException {           //Метод перемещает фотографию по указанному пути (копирование + удаление)
 
-        File photoList = new File(outputFolderPath);
-        String[] listPhotos = photoList.list();
+        String[] listPhotos = null;
+
+        try {
+            File FileToRead = new File(new URI(outputFolderPath));
+            listPhotos = FileToRead.list();
+        }
+        catch (URISyntaxException e){
+            e.printStackTrace();
+        }
+
         StringBuilder stringBuilder = new StringBuilder();
         String folderPath;
         XlsData xlsObj = new XlsData();

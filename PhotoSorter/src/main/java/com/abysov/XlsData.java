@@ -6,8 +6,11 @@ import org.apache.poi.hssf.usermodel.HSSFSheet;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.poifs.filesystem.POIFSFileSystem;
 
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.net.URI;
+import java.net.URISyntaxException;
 
 class XlsData {
     /**
@@ -22,12 +25,16 @@ class XlsData {
         HSSFSheet xlsSheet = null;
         //Подключение к .xls книге
         try {
-            fileSystem = new POIFSFileSystem(new FileInputStream(filePath));
+
+            fileSystem = new POIFSFileSystem(new FileInputStream(new File(new URI(filePath))));
             xlsBaseFile = new HSSFWorkbook(fileSystem);
             xlsSheet = xlsBaseFile.getSheet(sheetName);
         }
         catch (IOException e){
             System.out.println("Не обнаружен валидный файл base.xls");
+        }
+        catch (URISyntaxException e){
+            System.out.println("Не найден сетевой путь .xls файла");
         }
 
         //Создаются массивы, для записи параметров из каждой ячейки таблицы
