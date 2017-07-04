@@ -28,7 +28,7 @@ import java.net.URISyntaxException;
 
 class Main {
 
-    public static void main(String[] args) throws IOException, URISyntaxException {
+    public static void main(String[] args) throws IOException {
 
         StatusFrame statusFrame = new StatusFrame();
         statusFrame.setLocationRelativeTo(null);
@@ -38,7 +38,7 @@ class Main {
         AppSettings appSettings = new AppSettings();
 
         appSettings.settingsLoad();
-        System.out.println("Настройки загружены");
+        System.out.println("Настройки загружены...");
 
         PhotoMove move = new PhotoMove();
         move.setXlsBaseFilePath(appSettings.getXlsBaseFilePath());

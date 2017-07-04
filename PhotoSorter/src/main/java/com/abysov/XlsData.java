@@ -32,9 +32,11 @@ class XlsData {
         }
         catch (IOException e){
             System.out.println("Не обнаружен валидный файл base.xls");
+            System.exit(0);
         }
         catch (URISyntaxException e){
             System.out.println("Не найден сетевой путь .xls файла");
+            System.exit(0);
         }
 
         //Создаются массивы, для записи параметров из каждой ячейки таблицы
