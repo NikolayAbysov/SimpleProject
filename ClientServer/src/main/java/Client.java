@@ -7,7 +7,7 @@ class Client {
 
         try {
 
-            Socket socket = new Socket("127.0.0.1", 1201);// server ip and port
+            Socket socket = new Socket("127.0.0.1", 1201);
 
             DataInputStream dataInputStream = new DataInputStream(socket.getInputStream());
             DataOutputStream dataOutputStream = new DataOutputStream(socket.getOutputStream());
@@ -23,6 +23,8 @@ class Client {
                 msgIn = dataInputStream.readUTF();
                 System.out.println(msgIn);//Печать серверного сообщения
             }
+
+            socket.close();
 
         } catch (Exception e) {
             e.printStackTrace();
