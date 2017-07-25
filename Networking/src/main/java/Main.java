@@ -1,10 +1,10 @@
 import com.sun.org.apache.bcel.internal.classfile.Unknown;
 
 import javax.swing.*;
+import java.awt.*;
 import java.io.*;
 import java.net.InetAddress;
 import java.net.Socket;
-import java.net.UnknownHostException;
 
 public class Main extends JFrame implements Runnable {
 
@@ -13,8 +13,15 @@ public class Main extends JFrame implements Runnable {
     static private ObjectOutputStream objectOutputStream;
 
     public static void main (String[] args) {
+        new Main("Test");
+    }
 
-
+    public Main (String name) {
+        super(name);
+        setLayout(new FlowLayout());
+        setSize(300, 400);
+        setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+        setVisible(true);
     }
 
     public void run() {
