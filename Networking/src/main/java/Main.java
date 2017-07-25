@@ -2,6 +2,8 @@ import com.sun.org.apache.bcel.internal.classfile.Unknown;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.io.*;
 import java.net.InetAddress;
 import java.net.Socket;
@@ -21,6 +23,21 @@ public class Main extends JFrame implements Runnable {
         setLayout(new FlowLayout());
         setSize(300, 400);
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+        setLocationRelativeTo(null);
+
+        final JTextField textField = new JTextField(10);
+        final JButton button1 = new JButton("Send");
+        button1.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                if (e.getSource() == button1) {
+                    sendData(textField.getText());
+                }
+            }
+        });
+
+        add(textField);
+        add(button1);
+
         setVisible(true);
     }
 
@@ -45,7 +62,8 @@ public class Main extends JFrame implements Runnable {
         try {
             objectOutputStream.flush();
             objectOutputStream.writeObject(object);
-        } catch (IOException e) {
+        }
+        catch (IOException e) {
             e.printStackTrace();
         }
     }
