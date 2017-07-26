@@ -15,7 +15,8 @@ public class Main extends JFrame implements Runnable {
     static private ObjectOutputStream objectOutputStream;
 
     public static void main (String[] args) {
-        new Main("Test");
+        new Thread(new Main("Test")).start();
+        new Thread(new Server()).start();
     }
 
     public Main (String name) {
@@ -27,7 +28,7 @@ public class Main extends JFrame implements Runnable {
 
         final JTextField textField = new JTextField(10);
         final JButton button1 = new JButton("Send");
-        button1.addActionListener(new ActionListener() {
+        button1.addActionListener(new ActionListener() {//Вложенный класс ActionListener
             public void actionPerformed(ActionEvent e) {
                 if (e.getSource() == button1) {
                     sendData(textField.getText());
@@ -44,9 +45,8 @@ public class Main extends JFrame implements Runnable {
     public void run() {
 
         try {
-            connection = new Socket(InetAddress.getByName("127.0.0.2"), 333);
-
             while (true) {
+                connection = new Socket(InetAddress.getByName("127.0.0.2"), 333);
                 objectOutputStream = new ObjectOutputStream(connection.getOutputStream());
                 objectInputStream = new ObjectInputStream(connection.getInputStream());
                 JOptionPane.showMessageDialog(null, (String) objectInputStream.readObject());
